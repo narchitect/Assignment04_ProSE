@@ -8,24 +8,26 @@
     "net7.0": []
   },
   "packageFolders": {
-    "/Users/kimnayun/.nuget/packages/": {}
+    "C:\\Users\\Tamira Wrabel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kimnayun/Projects/Assignment04_ProSE/Assignment04_ProSE.csproj",
+      "projectUniqueName": "C:\\Users\\Tamira Wrabel\\Documents\\GitHub\\Assignment04_ProSE_ta\\Assignment04_ProSE\\Assignment04_ProSE.csproj",
       "projectName": "Assignment04_ProSE",
-      "projectPath": "/Users/kimnayun/Projects/Assignment04_ProSE/Assignment04_ProSE.csproj",
-      "packagesPath": "/Users/kimnayun/.nuget/packages/",
-      "outputPath": "/Users/kimnayun/Projects/Assignment04_ProSE/obj/",
+      "projectPath": "C:\\Users\\Tamira Wrabel\\Documents\\GitHub\\Assignment04_ProSE_ta\\Assignment04_ProSE\\Assignment04_ProSE.csproj",
+      "packagesPath": "C:\\Users\\Tamira Wrabel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tamira Wrabel\\Documents\\GitHub\\Assignment04_ProSE_ta\\Assignment04_ProSE\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/kimnayun/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Tamira Wrabel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -54,12 +56,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
