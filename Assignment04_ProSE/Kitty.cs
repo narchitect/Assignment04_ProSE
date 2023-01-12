@@ -8,10 +8,15 @@ namespace Assignment04_ProSE
 {
     public class Kitty
     {
-        public int KittyId { get; set; }
-        public string EventName { get; set; }
-        public string Currency { get; set; }
+        public int? KittyId { get; set; }
+        public string? EventName { get; set; }
+        public Currency? Currency { get; set; }
         public ICollection<Participant>? Participants { get; set; }
+        public ICollection<Comment> Comments { get; set; }
+        public int GroupCost { get; set; }
+        public ICollection<Participant>? Participants { get; set; }
+
+
 
 
         private Kitty() { }
