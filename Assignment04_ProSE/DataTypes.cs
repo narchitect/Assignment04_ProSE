@@ -10,7 +10,7 @@ namespace Assignment04_ProSE
     }
     public enum ShareType
     {
-        Differntly,
+        Differently,
         Equally
     }
     public enum PaymentType

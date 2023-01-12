@@ -3393,25 +3393,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      "projectUniqueName": "/Users/kimnayun/Projects/Assignment04_ProSE/Assignment04_ProSE.csproj",
-      "projectName": "Assignment04_ProSE",
-      "projectPath": "/Users/kimnayun/Projects/Assignment04_ProSE/Assignment04_ProSE.csproj",
-      "packagesPath": "/Users/kimnayun/.nuget/packages/",
-      "outputPath": "/Users/kimnayun/Projects/Assignment04_ProSE/obj/",
-=======
-=======
->>>>>>> Stashed changes
       "projectUniqueName": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj",
       "projectName": "Assignment04_ProSE",
       "projectPath": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj",
       "packagesPath": "/Users/kimnayun/.nuget/packages/",
       "outputPath": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/obj/",
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/kimnayun/.nuget/NuGet/NuGet.Config"
@@ -3470,5 +3456,13 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
