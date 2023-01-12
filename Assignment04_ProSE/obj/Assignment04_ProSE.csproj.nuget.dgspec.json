@@ -2,6 +2,7 @@
   "format": 1,
   "restore": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "/Users/kimnayun/Projects/Assignment04_ProSE/Assignment04_ProSE.csproj": {}
   },
   "projects": {
@@ -13,6 +14,19 @@
         "projectPath": "/Users/kimnayun/Projects/Assignment04_ProSE/Assignment04_ProSE.csproj",
         "packagesPath": "/Users/kimnayun/.nuget/packages/",
         "outputPath": "/Users/kimnayun/Projects/Assignment04_ProSE/obj/",
+=======
+    "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj": {}
+  },
+  "projects": {
+    "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj",
+        "projectName": "Assignment04_ProSE",
+        "projectPath": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj",
+        "packagesPath": "/Users/kimnayun/.nuget/packages/",
+        "outputPath": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/obj/",
+>>>>>>> Stashed changes
 =======
     "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj": {}
   },

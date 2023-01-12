@@ -1,9 +1,15 @@
 {
   "version": 2,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "dgSpecHash": "SilQDk6TK3lCQdZ9j4OWYDWFv0htGtFo8hcq7LNB5fJwBSQadW6DwDR67IMYNwH2ZnGHRDE8DZPusrDPSRQOGg==",
   "success": true,
   "projectFilePath": "/Users/kimnayun/Projects/Assignment04_ProSE/Assignment04_ProSE.csproj",
+=======
+  "dgSpecHash": "tgavSG61yNIWuXogANG1sg6sPz7X0N03qWk+38eqhiBIBSQg/6PiCxhbk5mqDCG5K6j5c9+6m8KO/uTYVCd81w==",
+  "success": true,
+  "projectFilePath": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj",
+>>>>>>> Stashed changes
   "expectedPackageFiles": [],
 =======
   "dgSpecHash": "0RjvekuJevgZvK8422fUEW/zKdPW16cc/kiL2EbkIMgiJKwXhRn06fw0r3Atv23ayZZsAqk4oWESsusX5yEFwA==",

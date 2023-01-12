@@ -1,4 +1,34 @@
 ﻿<Properties StartupConfiguration="{F6EE0555-8758-44E1-98F6-4F1C5A0EBC3E}|Default">
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Assignment04__ProSE FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Assignment04__ProSE PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Payment.cs">
+    <Files>
+      <File FileName="Kitty.cs" Line="2" Column="1" />
+      <File FileName="Payment.cs" Line="25" Column="10" />
+      <File FileName="Participant.cs" Line="13" Column="60" />
+      <File FileName="Comment.cs" Line="13" Column="1" />
+      <File FileName="DataTypes.cs" Line="2" Column="1" />
+      <File FileName="DatabaseFramework.cs" Line="1" Column="14" />
+      <File FileName="KittyContext.cs" Line="1" Column="14" />
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName=".DS_Store" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Assignment04_ProSE" expanded="True">
+            <Node name="Assignment04_ProSE" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Payment.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
