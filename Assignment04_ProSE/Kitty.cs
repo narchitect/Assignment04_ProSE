@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace Assignment04_ProSE
 {
-    internal class Kitty
+    public class Kitty
     {
+        public int KittyId { get; set; }
+        public string EventName { get; set; }
+        public string Currency { get; set; }
+        public ICollection<Participant>? Participants { get; set; }
+
+
+        private Kitty() { }
+        public Kitty(string eventName, string currency)
+        {
+            this.EventName = eventName;
+            this.Currency = currency;
+        }
+        public void CreateKitty(string eventName, string currency, Participant participant)
+        {
+            // Initialize creating one database for each Kitty
+
+        }
     }
 }
