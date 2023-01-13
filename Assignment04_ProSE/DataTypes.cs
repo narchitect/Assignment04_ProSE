@@ -10,6 +10,7 @@ namespace Assignment04_ProSE
     }
     public enum ShareType
     {
+
         Differently,
         Equally
     }
