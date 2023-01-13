@@ -7,6 +7,13 @@ public class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Hello, World!");
+        Participant Kim = new Participant();
+        List<Participant> Group1 = new List<Participant> { Kim };
+        Kitty skiTrip = new Kitty(1, "asd", "skiTrip", Currency.EUR, Group1);
+
+        skiTrip.GroupCost = 100;
+
+        skiTrip.WhoSeen.Add(Kim);
     }
 }
 

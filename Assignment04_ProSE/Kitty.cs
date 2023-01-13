@@ -11,11 +11,23 @@ namespace Assignment04_ProSE
         public int GroupCost { get; set; }
 		public ICollection<Participant> Pariticipants { get; set; } = null!;
         public ICollection<Participant> WhoSeen { get; set; } = null!;
-        public ICollection<Participant>? SettledDebts { get; set; }
+        public ICollection<Participant>? SettledParticipants { get; set; } = new List<Participant>();
         public ICollection<Comment>? Comments { get; set; }
 
-        public Kitty()
-		{
-		}
-	}
+        public Kitty(int id, string link, string eventName, Currency currency, ICollection<Participant> pariticipants)
+        {
+            Id = id;
+            Link = link;
+            EventName = eventName;
+            Currency = currency;
+            Pariticipants = pariticipants;
+            WhoSeen = pariticipants;
+        }
+
+
+        public void AddExpense (Participant sender, int Amount, ShareType shareType, string purpose, DateTime paymentDate)
+        {
+           
+        }
+    }
 }
