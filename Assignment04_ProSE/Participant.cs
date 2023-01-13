@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Assignment04_ProSE
 {
@@ -11,6 +11,5 @@ namespace Assignment04_ProSE
         public int TotalCost { get; set; }
         public bool SeenKitty { get; set; }
         public ICollection<Payment>? Payments { get; set; }
-
     }
 }

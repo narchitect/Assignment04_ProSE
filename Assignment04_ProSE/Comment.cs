@@ -4,6 +4,7 @@ namespace Assignment04_ProSE
 {
     public class Comment
     {
+
         public Comment(int id, Participant writer, string content, DateTime commentDate)
         {
             Id = id;

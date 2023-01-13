@@ -12,6 +12,5 @@ namespace Assignment04_ProSE
         public ShareType ShareType { get; set; }
         public PaymentType PaymentType { get; set; }
         public DateTime PaymentDate { get; set; }
-
     }
 }
