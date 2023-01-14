@@ -5,27 +5,30 @@ using Assignment04_ProSE;
 public class Program
 {
     static void Main(string[] args)
-    {
-        Console.WriteLine("Hello, World!");
-        Participant Kim = new Participant();
-        List<Participant> Group1 = new List<Participant> { Kim };
-        Kitty skiTrip = new Kitty(1, "asd", "skiTrip", Currency.EUR, Group1);
+    { 
+        var Kim = new Participant();
+        {
+            Kim.Name = "Kim";
+            Kim.Seen = true;
+            Kim.Total = 11.2;
+            Kim.CurrentDebt = 3;
+            Kim.Email = "ny.@icloud.com";
+        }
+        var KoreaTrip = new Kitty();
+        {
+            KoreaTrip.EventName = "KoreaTrip";
+            KoreaTrip.Link = "url";
+            KoreaTrip.HomeCurrency = Currency.KRW;
+            KoreaTrip.GroupCost = 100.3;
+            KoreaTrip.Pariticipants.Add(Kim);
+        }
 
-        skiTrip.GroupCost = 100;
-
-        skiTrip.WhoSeen.Add(Kim);
+        using (var context = new KittyContext())
+        {
+            context.Kitties.Add(KoreaTrip);
+            context.Participants.Add(Kim);
+            context.SaveChanges();
+        }
     }
 }
-
-//Console.WriteLine("Hello, World!");
-
-
-//var SktTrip = new Kitty("skitrip", List<Participant>(Tamira, Valery);
-//var UsaTrip = new Kitty("skitrip", List<Participant>(Valery, Kim );]]
-
-//var valsComment = new Comment(skiTrip, "hi");
-
-//var Valery = new Participant();
-//var Tamira = new Participant();
-
 

@@ -2,18 +2,26 @@ using System;
 
 namespace Assignment04_ProSE
 {
-    public class Participant : Kitty
+    public class Participant 
     {
-        public Participant(int id, string link, string eventName, Currency currency, ICollection<Participant> pariticipants) : base(id, link, eventName, currency, pariticipants)
+        
+        public int Id { get; set; }
+        public string Name { get; set; } = null!;
+        public string Email { get; set; }
+        public bool Seen { get; set; }
+        public double Total { get; set; }
+        public double CurrentDebt { get; set; }
+
+        public int KittyId { get; set; }
+        public Kitty Kitty { get; set; }
+
+        //public int PaymentParticipantId { get; set; }
+        //public List<PaymentParticipants> PaymentParticipants { get; set; }
+
+        public Participant()
         {
         }
 
-        public int Id { get; set; }
-        public string ParticipantName { get; set; } = null!;
-        public string? ParticipantEmail { get; set; }
-        public int CurrentDebt { get; set; }
-        public int TotalCost { get; set; }
-        public bool SeenKitty { get; set; }
-        public ICollection<Payment>? Payments { get; set; }
+
     }
 }

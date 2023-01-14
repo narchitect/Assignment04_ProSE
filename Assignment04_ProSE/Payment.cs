@@ -2,33 +2,35 @@
 
 namespace Assignment04_ProSE
 {
-    public class Payment : Participant
+    public class Payment
     {
-        public Payment(int id, string link, string eventName, Currency currency, ICollection<Participant> pariticipants) : base(id, link, eventName, currency, pariticipants)
-        {
-        }
+        //public List<PaymentParticipants> PaymentParticipants { get; set; }
 
-        public int Id { get; set; }
-        public int Amount { get; set; }
-        public string Purpose { get; set; } = null!;
-        public Participant Sender { get; set; } = null!;
-        public ICollection<Participant> Receivers { get; set; } = null!;
-        public ShareType ShareType { get; set; }
-        public PaymentType PaymentType { get; set; }
-        public DateTime PaymentDate { get; set; }
+        //public Payment(int id, string link, string eventName, Currency currency, ICollection<Participant> pariticipants) : base(id, link, eventName, currency, pariticipants)
+        //{
+        //}
 
-        pubic 
+        //public int Id { get; set; }
+        //public int Amount { get; set; }
+        //public string Purpose { get; set; } = null!;
+        //public Participant Sender { get; set; } = null!;
+        //public ICollection<Participant> Receivers { get; set; } = null!;
+        //public ShareType ShareType { get; set; }
+        //public PaymentType PaymentType { get; set; }
+        //public DateTime PaymentDate { get; set; }
 
-        public void SetReceiver(Kitty AEvent)
-        {
-            if (PaymentType == PaymentType.Expense || PaymentType == PaymentType.Income)
-            {
-                Receivers = AEvent.Pariticipants;
-            }
-            else if (PaymentType == PaymentType.MoneyGiven)
-            {
-                Receivers = 
-            }
-        }
+        //public 
+
+        //public void SetReceiver(Kitty AEvent)
+        //{
+        //    if (PaymentType == PaymentType.Expense || PaymentType == PaymentType.Income)
+        //    {
+        //        Receivers = AEvent.Pariticipants;
+        //    }
+        //    else if (PaymentType == PaymentType.MoneyGiven)
+        //    {
+        //        Receivers = 
+        //    }
+        //}
     }
 }
