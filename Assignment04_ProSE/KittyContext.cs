@@ -43,6 +43,10 @@ namespace Assignment04_ProSE
             modelBuilder.Entity<Participant>()
                 .Property(p => p.Seen)
                 .HasDefaultValue(false);
+
+            modelBuilder.Entity<Participant>()
+                .Property(p => p.Mark)
+                .HasDefaultValue(false);
         }
     }
 }

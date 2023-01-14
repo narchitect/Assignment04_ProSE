@@ -11,7 +11,7 @@ public class Program
             Kim.Name = "Kim";
             Kim.Seen = true;
             Kim.Total = 11.2;
-            Kim.CurrentDebt = 3;
+            Kim.Mark = true;
             Kim.Email = "ny.@icloud.com";
         }
 
@@ -27,7 +27,7 @@ public class Program
         var Comment = new Comment();
         {
             Comment.Content = "Hi, this is a comment";
-            Comment.dateTime = new DateTime(2023, 1, 14, 9, 27, 0);
+            Comment.DateTime = new DateTime(2023, 1, 14, 9, 27, 0);
         }
 
         Kim.Comments.Add(Comment);

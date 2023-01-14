@@ -9,8 +9,9 @@ namespace Assignment04_ProSE
         public string Name { get; set; } = null!;
         public string Email { get; set; }
         public bool Seen { get; set; }
+        public bool Mark { get; set; }
         public double Total { get; set; }
-        public double CurrentDebt { get; set; }
+        
 
         public int KittyId { get; set; }
         public Kitty Kitty { get; set; }

@@ -3,6 +3,7 @@ using System;
 using Assignment04_ProSE;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment04ProSE.Migrations
 {
     [DbContext(typeof(KittyContext))]
-    partial class KittyContextModelSnapshot : ModelSnapshot
+    [Migration("20230114215358_ReviseParticipantMark")]
+    partial class ReviseParticipantMark
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
