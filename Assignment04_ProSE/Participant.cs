@@ -15,13 +15,14 @@ namespace Assignment04_ProSE
         public int KittyId { get; set; }
         public Kitty Kitty { get; set; }
 
-        //public int PaymentParticipantId { get; set; }
-        //public List<PaymentParticipants> PaymentParticipants { get; set; }
+        public List<Comment> Comments { get; set; }
+
+        public List<Payment> Payments { get; set; }
 
         public Participant()
         {
+            Comments = new List<Comment>();
+            Payments = new List<Payment>();
         }
-
-
     }
 }

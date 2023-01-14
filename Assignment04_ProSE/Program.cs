@@ -14,6 +14,7 @@ public class Program
             Kim.CurrentDebt = 3;
             Kim.Email = "ny.@icloud.com";
         }
+
         var KoreaTrip = new Kitty();
         {
             KoreaTrip.EventName = "KoreaTrip";
@@ -23,10 +24,29 @@ public class Program
             KoreaTrip.Pariticipants.Add(Kim);
         }
 
+        var Comment = new Comment();
+        {
+            Comment.Content = "Hi, this is a comment";
+            Comment.dateTime = new DateTime(2023, 1, 14, 9, 27, 0);
+        }
+
+        Kim.Comments.Add(Comment);
+
+        var Payment = new Payment();
+        {
+            Payment.Purpose = "KoreanRestaurant";
+            Payment.Amount = 1000;
+            Payment.DateTime = DateTime.Now;
+        }
+
+        Kim.Payments.Add(Payment);
+
         using (var context = new KittyContext())
         {
             context.Kitties.Add(KoreaTrip);
             context.Participants.Add(Kim);
+            context.Comments.Add(Comment);
+            context.Payments.Add(Payment);
             context.SaveChanges();
         }
     }

@@ -21,6 +21,5 @@ namespace Assignment04_ProSE
         //{
         //    this.EventName = eventName;
         //}
-
     }
 }

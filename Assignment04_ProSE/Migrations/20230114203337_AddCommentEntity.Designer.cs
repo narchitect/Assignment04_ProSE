@@ -3,6 +3,7 @@ using System;
 using Assignment04_ProSE;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment04ProSE.Migrations
 {
     [DbContext(typeof(KittyContext))]
-    partial class KittyContextModelSnapshot : ModelSnapshot
+    [Migration("20230114203337_AddCommentEntity")]
+    partial class AddCommentEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
@@ -27,6 +30,9 @@ namespace Assignment04ProSE.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("KittyId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ParticipantId")
                         .HasColumnType("INTEGER");
 
@@ -34,6 +40,8 @@ namespace Assignment04ProSE.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("KittyId");
 
                     b.HasIndex("ParticipantId");
 
@@ -101,39 +109,21 @@ namespace Assignment04ProSE.Migrations
                     b.ToTable("Participants");
                 });
 
-            modelBuilder.Entity("Assignment04_ProSE.Payment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("REAL");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ParticipantId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Purpose")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ParticipantId");
-
-                    b.ToTable("Payments");
-                });
-
             modelBuilder.Entity("Assignment04_ProSE.Comment", b =>
                 {
+                    b.HasOne("Assignment04_ProSE.Kitty", "Kitty")
+                        .WithMany()
+                        .HasForeignKey("KittyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Assignment04_ProSE.Participant", "Participant")
                         .WithMany("Comments")
                         .HasForeignKey("ParticipantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Kitty");
 
                     b.Navigation("Participant");
                 });
@@ -149,17 +139,6 @@ namespace Assignment04ProSE.Migrations
                     b.Navigation("Kitty");
                 });
 
-            modelBuilder.Entity("Assignment04_ProSE.Payment", b =>
-                {
-                    b.HasOne("Assignment04_ProSE.Participant", "Participant")
-                        .WithMany("Payments")
-                        .HasForeignKey("ParticipantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Participant");
-                });
-
             modelBuilder.Entity("Assignment04_ProSE.Kitty", b =>
                 {
                     b.Navigation("Pariticipants");
@@ -168,8 +147,6 @@ namespace Assignment04ProSE.Migrations
             modelBuilder.Entity("Assignment04_ProSE.Participant", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Payments");
                 });
 #pragma warning restore 612, 618
         }

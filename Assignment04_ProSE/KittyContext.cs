@@ -9,6 +9,8 @@ namespace Assignment04_ProSE
 
         public DbSet<Kitty> Kitties { get; set;}
         public DbSet<Participant> Participants { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -17,11 +19,23 @@ namespace Assignment04_ProSE
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) // function to define relations among different sets in a database
         {
+            // one - many
             modelBuilder.Entity<Participant>()
                 .HasOne(p => p.Kitty)
                 .WithMany(k => k.Pariticipants)
                 .HasForeignKey(p => p.KittyId);
 
+            modelBuilder.Entity<Comment>()
+                .HasOne(c => c.Participant)
+                .WithMany(p => p.Comments)
+                .HasForeignKey(c => c.ParticipantId);
+
+            modelBuilder.Entity<Payment>()
+                 .HasOne(pay => pay.Participant)
+                 .WithMany(p => p.Payments)
+                 .HasForeignKey(pay => pay.ParticipantId);
+
+            // conversion configuration
             modelBuilder.Entity<Kitty>()
                 .Property(k => k.HomeCurrency)
                 .HasConversion(v => v.ToString(), v => (Currency)Enum.Parse(typeof(Currency), v));
@@ -29,20 +43,6 @@ namespace Assignment04_ProSE
             modelBuilder.Entity<Participant>()
                 .Property(p => p.Seen)
                 .HasDefaultValue(false);
-            //// . chaining Method to return same dataType
-            //modelBuilder.Entity<PaymentParticipants>() //inside PaymentParticipants entity
-            //    .HasOne<Participant>(pp => pp.Sender) //one Participant entity has 1->m 1 is pt.sender 
-            //    .WithMany(p => p.PaymentParticipants) 
-            //    .HasForeignKey(pp => pp.SenderId); 
-
-            //modelBuilder.Entity<PaymentParticipants>() //inside PaymentParticipants entity
-            //    .HasOne<Participant>(pp => pp.Receiver) //one Participant entity has 1->m 1 is pt.sender 
-            //    .WithMany(p => p.PaymentParticipants) // one participant has many pp.
-            //    .HasForeignKey(pp => pp.SenderId);
-
-            //modelBuilder.Entity<PaymentParticipants>()
-            //    .HasOne<Payment>(pp => pp.Payment)
-            //    .WithMany(pay => pay.)
         }
     }
 }
