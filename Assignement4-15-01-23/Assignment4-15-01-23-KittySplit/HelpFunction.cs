@@ -9,86 +9,160 @@ namespace Assignment4_15_01_23_KittySplit
 {
     public class HelpFunction
     {
-        public static void DeleteCommentFromDatabase()
+        public static void CommentOverview()
         {
-            Console.WriteLine("Which Comment do you want to delete ");
-            int commentId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Current Comments in the Database.");
             using (var context = new KittyContext())
             {
-                List<Comment> comments = new List<Comment>()
+                var commentIds = context.Comments
+                    .ToList();
+                foreach (var comment in commentIds)
                 {
-                    new Comment{Id = commentId },
-                };
-                foreach (Comment comment in comments)
+
+                    Console.WriteLine("Comment: {0} , CommentId: {1} , CommentDate: {1}", comment.Content, comment.Id, comment.DateTime);
+                }
+            }
+        }
+        //Delete Comments
+        public static void DeleteCommentFromDatabase()
+        {
+            Console.WriteLine("Current Comments in the Database.");
+            using (var context = new KittyContext())
+            {
+                var commentIds = context.Comments
+                    .ToList();
+                foreach (var comment in commentIds)
+                {                    
+                    Console.WriteLine("Comment: {0} , CommentId: {1}", comment.Content, comment.Id);
+                }
+            }
+            Console.WriteLine("Do you want to delet a comment? yes or no?");
+            string userInput = Console.ReadLine();
+            if (userInput == "yes")
+            {
+                Console.WriteLine("Which Comment do you want to delete: Enter the Id:");
+                int commentId = Convert.ToInt32(Console.ReadLine());
+
+                using (var context = new KittyContext())
                 {
-                    context.Comments.Remove(comment);
-                }                
-                context.SaveChanges();
+                    List<Comment> comments = new List<Comment>()
+                    {
+                        new Comment{Id = commentId },
+                    };
+                    foreach (Comment comment in comments)
+                    {
+                        context.Comments.Remove(comment);
+                    }
+                    context.SaveChanges();
+                }
+                Console.WriteLine("Your comment was deleted.");
+            }
+            else if (userInput == "no")
+            {
+                System.Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Wrong Comment Id. Try again");
+                DeleteCommentFromDatabase();
             }
         }
         
         public static void AddComment()
         {
-            Console.WriteLine("You can add a comment here:");
-            string commentContent = Console.ReadLine();
-            Console.WriteLine("Enter your ParticipantId[6/7]:");
-            int participantId = Convert.ToInt32(Console.ReadLine());
-            var YourComment = new Comment()
+            Console.WriteLine("Do you want to add a comment? yes or no?");
+            string userInput = Console.ReadLine();
+            if (userInput == "yes")
             {
-                Content = commentContent,
-                DateTime = new DateTime(2023, 1, 14, 9, 27, 0),
-                ParticipantId = participantId
+                Console.WriteLine("Who are you?");
+                using (var context = new KittyContext())
+                {
+                    var participantIds = context.Participants
+                        .ToList();
+                    foreach (var participant in participantIds)
+                    {
+                        Console.WriteLine("Name: {0} , ParticipantId: {1}", participant.Name, participant.Id);                        
+                    }                    
+                }
+                Console.WriteLine("Enter your ParticipantId:");
+                int participantId = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Add a comment here: \n You can enter the text of your comment here:");
+                string commentContent = Console.ReadLine();
+                var YourComment = new Comment()
+                {
+                    Content = commentContent,
+                    DateTime = new DateTime(2023, 1, 14, 9, 27, 0),
+                    ParticipantId = participantId
+                };
+                using (var context = new KittyContext())
+                {
+                    context.Comments.Add(YourComment);
+                    context.SaveChanges();
 
-            };
-            using (var context = new KittyContext())
-            {
-                context.Comments.Add(YourComment);
-                context.SaveChanges();
+                }
+                Console.WriteLine("Your comment was added.");
             }
+            else if (userInput == "no")
+            {
+                System.Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Wrong Comment Id. Try again");
+                DeleteCommentFromDatabase();
+            }
+
         }
         public static void AddParticipant()
         {
-            Console.WriteLine("You can add a participant here:");
-            string participantName = Console.ReadLine();
-            Console.WriteLine("You can add a participant email here:");
-            string participantEmail = Console.ReadLine();
-            Console.WriteLine("Enter your KittyId[10/14/15]:");
-            int kittyId = Convert.ToInt32(Console.ReadLine());
-            var NewParticipant = new Participant()
+            Console.WriteLine("Do you want to add a participant? yes or no?");
+            string userInput = Console.ReadLine();
+            if (userInput == "yes")
             {
-                Name = participantName,
-                Seen = true,
-                Total = 0,
-                Mark = true,
-                Email = participantEmail,
-                KittyId = kittyId
-            };
-            using (var context = new KittyContext())
-            {
-                context.Participants.Add(NewParticipant);
-                context.SaveChanges();
+                Console.WriteLine("You can add a participant here:");
+                string participantName = Console.ReadLine();
+                Console.WriteLine("You can add a participant email here:");
+                string participantEmail = Console.ReadLine();
+                Console.WriteLine("Current Kitties in the Database.");
+                using (var context = new KittyContext())
+                {
+                    var KittiesIds = context.Kitties
+                        .ToList();
+                    foreach (var kitty in KittiesIds)
+                    {
+                        Console.WriteLine("Kitty Name: {0} , KittyID: {1}", kitty.EventName, kitty.Id);
+                    }
+                }
+                Console.WriteLine("Enter your KittyId:");
+                int kittyId = Convert.ToInt32(Console.ReadLine());
+                var NewParticipant = new Participant()
+                {
+                    Name = participantName,
+                    Seen = true,
+                    Total = 0,
+                    Mark = true,
+                    Email = participantEmail,
+                    KittyId = kittyId
+                };
+                using (var context = new KittyContext())
+                {
+                    context.Participants.Add(NewParticipant);
+                    context.SaveChanges();
+                }
+                Console.WriteLine("Your participant was added.");
             }
-        }
-        //public static void AddPayment()
-        //{
-        //    Console.WriteLine("You can add a payment here:");
-        //    string purposePayment = Console.ReadLine();
-        //    Console.WriteLine("You can add a participant email here:");
-        //    string participantEmail = Console.ReadLine();
-        //    Console.WriteLine("Enter your KittyId[10/14/15]:");
-        //    int amountPayment = Convert.ToInt32(Console.ReadLine());
-        //    var NewPayment = new Payment()
-        //    {
-        //        Purpose = purposePayment,
+            else if (userInput == "no")
+            {
+                System.Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Wrong Comment Id. Try again");
+                DeleteCommentFromDatabase();
+            }
 
-                
-        //    };
-        //    using (var context = new KittyContext())
-        //    {
-        //        context.Participants.Add(NewPayment);
-        //        context.SaveChanges();
-        //    }
-        //}
+        }
+        
         public static void CreateOverview()
         {
             //Group Cost
@@ -97,7 +171,17 @@ namespace Assignment4_15_01_23_KittySplit
             string userInput = Console.ReadLine();
             if (userInput == "yes")
             {
-                Console.WriteLine("Enter the Kitties name which overview you want to see [Ski Trip/KoreaTrip/USATrip]:");
+                Console.WriteLine("These are the Kitties in the database.");
+                using (var context = new KittyContext())
+                {
+                    var KittiesIds = context.Kitties
+                        .ToList();
+                    foreach (var kitty in KittiesIds)
+                    {
+                        Console.WriteLine("Kitty Name: {0} , KittyID: {1}", kitty.EventName, kitty.Id);
+                    }
+                }
+                Console.WriteLine("Enter the Kitties name which overview you want to see:");
                 string choosenKitty = Console.ReadLine();
                 using (var context = new KittyContext())
                 {
@@ -110,16 +194,25 @@ namespace Assignment4_15_01_23_KittySplit
                         Console.WriteLine(groupCost.GroupCost);
                     }
                 }
-                            
-            //Your Cost == total
-                Console.WriteLine("Enter the Participant Name whose overview you want to see:");
-                string choosenParticipant = Console.ReadLine();
-                
-                
+
+                //Your Cost == total
+                Console.WriteLine("These are the Participants in the database.");
                 using (var context = new KittyContext())
                 {
                     var participants = context.Participants
-                        .Where(p => p.Name == "Valery")
+                        .ToList();
+                    foreach (var participant in participants)
+                    {
+                        Console.WriteLine("Participant Name: {0} , Participant Id: {1}", participant.Name, participant.Id);
+                    }
+                }
+                Console.WriteLine("Enter the Participant Name whose overview you want to see:");
+                string choosenParticipant = Console.ReadLine();
+                              
+                using (var context = new KittyContext())
+                {
+                    var participants = context.Participants
+                        .Where(p => p.Name == choosenParticipant)
                         .ToList();
                     foreach (var participant in participants)
                     {
@@ -129,10 +222,15 @@ namespace Assignment4_15_01_23_KittySplit
                 }
             }
 
+            else if (userInput == "Exit")
+            {
+                System.Environment.Exit(0);
+            }
             else
             {
-                Console.WriteLine("What do you want to do next?");
-            }       
+                Console.WriteLine("Wrong startKeyWord, Write it again. To Exit, Write 'Exit'");
+                CreateKitty();
+            }
 
         }
         
@@ -156,9 +254,14 @@ namespace Assignment4_15_01_23_KittySplit
                     }
                 }
             }
+            else if (userInput == "Exit")
+            {
+                System.Environment.Exit(0);
+            }
             else
             {
-                Console.WriteLine("What do you want to do next?");
+                Console.WriteLine("Wrong startKeyWord, Write it again. To Exit, Write 'Exit'");
+                ShowKittyLink();
             }
         }
 
