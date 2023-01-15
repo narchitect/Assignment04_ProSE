@@ -7,7 +7,7 @@ namespace Assignment04_ProSE
         static Kitty aKitty { get; set; }
         static List<string> ParticipantsNames { get; set; }
 
-        public static Kitty CreateKitty()
+        public static void CreateKitty()
         {
             Console.WriteLine("Welcome to KittySplit! to Start Kitty write 'Start Kitty'");
             string userInput = Console.ReadLine();
@@ -86,8 +86,6 @@ namespace Assignment04_ProSE
                     context.Kitties.Add(aKitty);
                     context.SaveChanges();
                 }
-
-                return aKitty;
             }
 
             else if (userInput == "Exit")
@@ -99,8 +97,6 @@ namespace Assignment04_ProSE
                 Console.WriteLine("Wrong startKeyWord, Write it again. To Exit, Write 'Exit'");
                 CreateKitty();
             }
-
-            return null;
         }
 
         private static Currency VaildCurrency(string userInputCurrency)
@@ -121,69 +117,118 @@ namespace Assignment04_ProSE
 
 
         //Add expense
+        public static void AddPayment()
+        {
+            using (var context = new KittySplitContext())
+            {
+                var kitties = context.Kitties.ToList();
 
-        //public static void AddPayment(Kitty aKitty, string participantName)
-        //{
-        //    using (var context = new KittySplitContext())
-        //    {
-        //        Kitty currentKitty = (from k in context.Kitties
-        //                       where k.EventName == selectedEventName
-        //                       select k).First<Kitty>();
+                //set the event
 
-        //        aKitty = currentKitty;
+                //1. primt
+                foreach (Kitty k in kitties)
+                { Console.WriteLine("Event Lists: {0}", k.EventName); }
 
-        //        foreach (Participant p in aKitty.Participants)
-        //        { Console.WriteLine("Participants : {0}", p.Name); }
+                Console.WriteLine("Select the event: ");
+                string eventName = Console.ReadLine();
 
-        //        Console.WriteLine("Enter the ower of the payment: ");
-        //        string ownerName = Console.ReadLine();
+                Kitty currentKitty;
+                while (true)
+                {
+                    currentKitty = VaildEventName(kitties, eventName);
+                    if (currentKitty != null)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("select a right eventName");
+                    eventName = Console.ReadLine();
+                }
 
-        //        Console.WriteLine("Enter the payment purpose: ");
-        //        string purpose = Console.ReadLine();
+                //set the owner
+                var participants = context.Participants.Where(p => p.KittyId == currentKitty.Id)
+                    .ToList();
+                foreach (Participant p in participants)
+                { Console.WriteLine("Participants : {0}", p.Name); }
 
-        //        Console.WriteLine("Enter the amount: ");
-        //        double amount = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Enter the ower of the payment: ");
+                string ownerName = Console.ReadLine();
+                while (VaildParticipantName(participants, ownerName) == null)
+                {
+                    Console.WriteLine("select a right participant");
+                    ownerName = Console.ReadLine();
+                }
 
-        //        Console.WriteLine("Enter the DateTime: Example(mm/dd/yyyy)");
-        //        DateTime dateTime = VaildDateTime(Console.ReadLine());
+                Console.WriteLine("Enter the payment purpose: ");
+                string purpose = Console.ReadLine();
 
-        //        var ownerId = aKitty.Participants.Where(p => p.Name == ownerName)
-        //            .Select(p => p.Id).First();
+                Console.WriteLine("Enter the amount: ");
+                double amount = Convert.ToDouble(Console.ReadLine());
 
-        //        var aPayment = new Payment()
-        //        {
-        //            Purpose = purpose,
-        //            Amount = amount,
-        //            DateTime = dateTime,
-        //            ParticipantId = ownerId
-        //        };
+                Console.WriteLine("Enter the DateTime: Example(mm/dd/yyyy)");
+                string dateTimeName = Console.ReadLine();
+                DateTime dateTime;
+                while (true)
+                {
+                    dateTime = VaildDateTime(dateTimeName);
+                    if (dateTime != null)
+                    {
+                        break;
+                    }
+                    dateTimeName = Console.ReadLine();
+                }
 
-        //        //using (var context = new KittySplitContext())
-        //        //{
-        //        //    context.Payments.Add(aPayment);
-        //        //    context.SaveChanges();
-        //        //}
-        //    }
-           
-        //}
+                var ownerId = participants.Where(p => p.Name == ownerName)
+                    .Select(p => p.Id).First();
 
-        //private static DateTime VaildDateTime(string userInput)
-        //{
-        //    DateTime dateTime;
-        //    if (DateTime.TryParse(userInput, out dateTime))
-        //    {
-        //        dateTime = DateTime.Parse(userInput);
-        //        return dateTime;
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("wrong DateTime format. Try it again. Example(mm/dd/yyyy)");
-        //        userInput = Console.ReadLine();
-        //        VaildDateTime(userInput);
-        //    }
+                var aPayment = new Payment()
+                {
+                    Purpose = purpose,
+                    Amount = amount,
+                    DateTime = dateTime,
+                    ParticipantId = ownerId
+                };
 
-        //    return dateTime;
-        //}
+                context.Payments.Add(aPayment);
+                context.SaveChanges();
+
+            }
+        }
+        
+        private static DateTime VaildDateTime(string userInput)
+        {
+            DateTime dateTime;
+            if (DateTime.TryParse(userInput, out dateTime))
+            {
+                dateTime = DateTime.Parse(userInput);
+                return dateTime;
+            }
+            else
+            {
+                Console.WriteLine("wrong DateTime format. Try it again. Example(mm/dd/yyyy)");
+                userInput = Console.ReadLine();
+                VaildDateTime(userInput);
+            }
+
+            return dateTime;
+        }
+
+        private static Kitty VaildEventName(List<Kitty> kitties,string eventName)
+        {
+            foreach(Kitty k in kitties)
+            {
+                if (k.EventName == eventName) return k;
+            }
+            return null;
+        }
+
+        private static Participant VaildParticipantName(List<Participant> participants, string participantName)
+        {
+            foreach (Participant p in participants)
+            {
+                if (p.Name == participantName) return p;
+            }
+            return null;
+        }
 
         ////Add Participant
         //public static void AddParticipant(Participant participant)
@@ -203,7 +248,5 @@ namespace Assignment04_ProSE
         //        context.Expenses.Add(expense);
         //        context.SaveChanges();
         //    }            
-
-
     }
 }

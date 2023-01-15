@@ -6,8 +6,8 @@ public class Program
 {
     static void Main(string[] args)
     {
-        Kitty germanyTrip = HelpFunctions.CreateKitty();
-        //HelpFunctions.AddPayment("KoreaTrip");
+        //HelpFunctions.CreateKitty();
+        HelpFunctions.AddPayment();
         //var Tami = new Participant();
         //{
         //    Tami.Name = "Tamira";
