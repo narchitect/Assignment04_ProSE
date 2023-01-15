@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assignment04_ProSE
 {
@@ -356,7 +357,7 @@ namespace Assignment04_ProSE
             }
         }
 
-        public static void CreateOverview()
+        public static void OverviwKitty()
         {
             //Group Cost: 
             Console.WriteLine("Do you want to see Kitty Overview? yes or no:");
@@ -419,6 +420,58 @@ namespace Assignment04_ProSE
             }
 
         }
+
+        public static void ShowKittyLink()
+        {
+            Console.WriteLine("Do you want to invite people to your kitty? (yes or no)");
+            string userInput = Console.ReadLine();
+            if (userInput == "yes")
+            {
+                using (var context = new KittySplitContext())
+                {
+                    //check the current kitty
+                    Console.WriteLine("Which Event do you want to edit");
+                    var kitties = context.Kitties.ToList();
+                    foreach (Kitty k in kitties)
+                    { Console.WriteLine("Event Lists: {0}", k.EventName); }
+
+                    Console.WriteLine("Select the event: ");
+                    string eventName = Console.ReadLine();
+
+                    Kitty currentKitty;
+                    while (true)
+                    {
+                        currentKitty = VaildEventName(kitties, eventName);
+                        if (currentKitty != null)
+                        {
+                            break;
+                        }
+                        Console.WriteLine("select a right eventName");
+                        eventName = Console.ReadLine();
+                    }
+
+                    //print out the link
+                    var links = context.Kitties
+                        .Where(p => p.EventName == eventName)
+                        .ToList();
+                    foreach (var link in links)
+                    {
+                        Console.WriteLine("This is your invitation link:");
+                        Console.WriteLine(link.Link);
+                    }
+                }
+            }
+            else if (userInput == "Exit")
+            {
+                System.Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Wrong startKeyWord, Write it again. To Exit, Write 'Exit'");
+                ShowKittyLink();
+            }
+        }
+
 
 
         private static Currency VaildCurrency(string userInputCurrency)
