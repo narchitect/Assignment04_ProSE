@@ -356,6 +356,71 @@ namespace Assignment04_ProSE
             }
         }
 
+        public static void CreateOverview()
+        {
+            //Group Cost: 
+            Console.WriteLine("Do you want to see Kitty Overview? yes or no:");
+            string userInput = Console.ReadLine();
+            if (userInput == "yes")
+            {
+                Console.WriteLine("These are the Kitties in the database.");
+                using (var context = new KittySplitContext())
+                {
+                    var KittiesIds = context.Kitties
+                        .ToList();
+                    foreach (var kitty in KittiesIds)
+                    {
+                        Console.WriteLine("Kitty Name: {0} , KittyID: {1}", kitty.EventName, kitty.Id);
+                    }
+
+                    Console.WriteLine("Enter the Kitties name which overview you want to see:");
+
+                    string choosenKitty = Console.ReadLine();
+                    var groupCosts = context.Kitties
+                        .Where(p => p.EventName == choosenKitty)
+                        .ToList();
+                    foreach (var groupCost in groupCosts)
+                    {
+                        Console.WriteLine("This event cost the group:");
+                        Console.WriteLine(groupCost.GroupCost);
+                    }
+                
+                    //Your Cost == total
+                    Console.WriteLine("These are the Participants in the database.");
+                
+                    var participants = context.Participants.Where( p => p.KittyId == groupCosts[0].Id)
+                        .ToList();
+                    foreach (var participant in participants)
+                    {
+                        Console.WriteLine("Participant Name: {0} , Participant Id: {1}", participant.Name, participant.Id);
+                    }
+                
+                    Console.WriteLine("Enter the Participant Name whose overview you want to see:");
+                    string choosenParticipant = Console.ReadLine();
+
+                    participants = context.Participants
+                        .Where(p => p.Name == choosenParticipant && p.KittyId == groupCosts[0].Id) 
+                        .ToList();
+                    foreach (var participant in participants)
+                    {
+                        Console.WriteLine("This event cost you:");
+                        Console.WriteLine(participant.Total);
+                    }
+                }
+            }
+            else if (userInput == "Exit")
+            {
+                System.Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Wrong startKeyWord, Write it again. To Exit, Write 'Exit'");
+                CreateKitty();
+            }
+
+        }
+
+
         private static Currency VaildCurrency(string userInputCurrency)
         {
             var homeCurrency = new Currency();

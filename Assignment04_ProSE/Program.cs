@@ -10,7 +10,8 @@ public class Program
         //HelpFunctions.AddPayment();
         //HelpFunctions.AddComment();
         //HelpFunctions.CommentOverview();
-        HelpFunctions.DeleteCommentFromDatabase();
+        //HelpFunctions.DeleteCommentFromDatabase();
+        HelpFunctions.CreateOverview();
         //var Tami = new Participant();
         //{
         //    Tami.Name = "Tamira";
