@@ -18,8 +18,7 @@ namespace Assignment4_15_01_23_KittySplit
                     .ToList();
                 foreach (var comment in commentIds)
                 {
-
-                    Console.WriteLine("Comment: {0} , CommentId: {1} , CommentDate: {1}", comment.Content, comment.Id, comment.DateTime);
+                    Console.WriteLine("Comment: {0} , CommentId: {1} , CommentDate: {2}", comment.Content, comment.Id, comment.DateTime);
                 }
             }
         }
@@ -221,7 +220,6 @@ namespace Assignment4_15_01_23_KittySplit
                     }
                 }
             }
-
             else if (userInput == "Exit")
             {
                 System.Environment.Exit(0);
