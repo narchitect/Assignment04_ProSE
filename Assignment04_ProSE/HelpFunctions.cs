@@ -1,4 +1,5 @@
 ﻿using System;
+using Internal;
 
 namespace Assignment04_ProSE
 {
@@ -99,23 +100,6 @@ namespace Assignment04_ProSE
             }
         }
 
-        private static Currency VaildCurrency(string userInputCurrency)
-        {
-            var homeCurrency = new Currency();
-            if (Enum.IsDefined(typeof(Currency), userInputCurrency))
-            {
-                homeCurrency = Enum.Parse<Currency>(userInputCurrency);
-            }
-            else
-            {
-                Console.WriteLine("Wrong Currency, Write a vaild Currency");
-                userInputCurrency = Console.ReadLine();
-                VaildCurrency(userInputCurrency);
-            }
-            return homeCurrency;
-        }
-
-
         //Add expense
         public static void AddPayment()
         {
@@ -193,7 +177,25 @@ namespace Assignment04_ProSE
 
             }
         }
-        
+
+
+
+        private static Currency VaildCurrency(string userInputCurrency)
+        {
+            var homeCurrency = new Currency();
+            if (Enum.IsDefined(typeof(Currency), userInputCurrency))
+            {
+                homeCurrency = Enum.Parse<Currency>(userInputCurrency);
+            }
+            else
+            {
+                Console.WriteLine("Wrong Currency, Write a vaild Currency");
+                userInputCurrency = Console.ReadLine();
+                VaildCurrency(userInputCurrency);
+            }
+            return homeCurrency;
+        }
+
         private static DateTime VaildDateTime(string userInput)
         {
             DateTime dateTime;
@@ -229,24 +231,5 @@ namespace Assignment04_ProSE
             }
             return null;
         }
-
-        ////Add Participant
-        //public static void AddParticipant(Participant participant)
-        //{
-        //    using (var context = new KittyContext())
-        //    {
-        //        context.Participants.Add(participant);
-        //        context.SaveChanges();
-        //    }            
-        //}
-
-        ////Add Expanses
-        //public static void AddExpense(Expense expense)
-        //{
-        //    using (var context = new KittyContext())
-        //    {
-        //        context.Expenses.Add(expense);
-        //        context.SaveChanges();
-        //    }            
     }
 }
