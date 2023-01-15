@@ -178,6 +178,52 @@ namespace Assignment04_ProSE
             }
         }
 
+        public static void AddComment()
+        {
+            Console.WriteLine("Do you want to add a comment? yes or no?");
+            string userInput = Console.ReadLine();
+            if (userInput == "yes")
+            {
+                Console.WriteLine("Who are you?");
+                using (var context = new KittyContext())
+                {
+                    var participantIds = context.Participants
+                        .ToList();
+                    foreach (var participant in participantIds)
+                    {
+                        Console.WriteLine("Name: {0} , ParticipantId: {1}", participant.Name, participant.Id);
+                    }
+                }
+                Console.WriteLine("Enter your ParticipantId:");
+                int participantId = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Add a comment here: \n You can enter the text of your comment here:");
+                string commentContent = Console.ReadLine();
+                var YourComment = new Comment()
+                {
+                    Content = commentContent,
+                    DateTime = DateTime.Now,
+                    ParticipantId = participantId
+                };
+                using (var context = new KittyContext())
+                {
+                    context.Comments.Add(YourComment);
+                    context.SaveChanges();
+
+                }
+                Console.WriteLine("Your comment was added.");
+            }
+            else if (userInput == "no")
+            {
+                System.Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Wrong Comment Id. Try again");
+                DeleteCommentFromDatabase();
+            }
+
+        }
+
 
 
         private static Currency VaildCurrency(string userInputCurrency)
