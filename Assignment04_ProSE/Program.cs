@@ -8,7 +8,8 @@ public class Program
     {
         //HelpFunctions.CreateKitty();
         //HelpFunctions.AddPayment();
-        HelpFunctions.AddComment();
+        //HelpFunctions.AddComment();
+        HelpFunctions.CommentOverview();
         //var Tami = new Participant();
         //{
         //    Tami.Name = "Tamira";

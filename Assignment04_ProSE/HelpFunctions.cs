@@ -182,7 +182,7 @@ namespace Assignment04_ProSE
             string userInput = Console.ReadLine();
             if (userInput == "yes")
             {
-
+                //check the current kitty
                 Console.WriteLine("Which Event do you want to edit");
                 using (var context = new KittySplitContext())
                 {
@@ -289,7 +289,45 @@ namespace Assignment04_ProSE
             }
         }
 
+        public static void CommentOverview()
+        {
+            Console.WriteLine("Current Comments in the Database.");
+            using (var context = new KittySplitContext())
+            {
+                //check the current kitty
+                Console.WriteLine("Which Event do you want to edit");
+                var kitties = context.Kitties.ToList();
+                foreach (Kitty k in kitties)
+                { Console.WriteLine("Event Lists: {0}", k.EventName); }
 
+                Console.WriteLine("Select the event: ");
+                string eventName = Console.ReadLine();
+
+                Kitty currentKitty;
+                while (true)
+                {
+                    currentKitty = VaildEventName(kitties, eventName);
+                    if (currentKitty != null)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("select a right eventName");
+                    eventName = Console.ReadLine();
+                }
+
+                //vaild the commentIds
+                var participants = context.Participants.Where(p => p.KittyId == currentKitty.Id)
+                    .ToList();
+
+                var commentIds = context.Comments.Where(c => participants.Contains(c.Participant)).ToList();
+
+                foreach (var comment in commentIds)
+                {
+                    Console.WriteLine("Comment: {0} , CommentId: {1} , CommentDate: {2}", comment.Content, comment.Id, comment.DateTime);
+                }
+                
+            }
+        }
 
         private static Currency VaildCurrency(string userInputCurrency)
         {
