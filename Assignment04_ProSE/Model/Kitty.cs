@@ -10,16 +10,25 @@ namespace Assignment04_ProSE
         public string Link { get; set; }
         public double GroupCost { get; set; }
 
-		public List<Participant> Pariticipants { get; set; } = null!;
+		public List<Participant> Participants { get; set; } = null!;
 
-        public Kitty ()
+        public Kitty (string eventName, Currency homeCurrency, List<string> participantsNames)
         {
-            this.Pariticipants = new List<Participant>();
+            this.Participants = new List<Participant>();
+
+            this.EventName = eventName;
+            this.HomeCurrency = homeCurrency;
+
+            foreach (string p in participantsNames)
+            {
+                Participants.Add(new Participant(p));
+            }
         }
 
-        //public Kitty(string eventName) : this()
-        //{
-        //    this.EventName = eventName;
-        //}
+        public Kitty(string eventName, Currency homeCurrency, List<string> participantsNames, string creatorEmail)
+            : this(eventName, homeCurrency, participantsNames)
+        {
+            this.Participants[0].Email = creatorEmail;
+        }
     }
 }

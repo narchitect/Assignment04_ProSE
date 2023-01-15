@@ -22,7 +22,7 @@ namespace Assignment04_ProSE
             // one - many
             modelBuilder.Entity<Participant>()
                 .HasOne(p => p.Kitty)
-                .WithMany(k => k.Pariticipants)
+                .WithMany(k => k.Participants)
                 .HasForeignKey(p => p.KittyId);
 
             modelBuilder.Entity<Comment>()

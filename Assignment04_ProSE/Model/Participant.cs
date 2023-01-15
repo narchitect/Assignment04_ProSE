@@ -20,10 +20,12 @@ namespace Assignment04_ProSE
 
         public List<Payment> Payments { get; set; }
 
-        public Participant()
+        public Participant(string name)
         {
             Comments = new List<Comment>();
             Payments = new List<Payment>();
+
+            this.Name = name; 
         }
     }
 }

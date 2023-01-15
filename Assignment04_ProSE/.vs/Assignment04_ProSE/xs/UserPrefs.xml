@@ -1,28 +1,32 @@
 ﻿<Properties StartupConfiguration="{F6EE0555-8758-44E1-98F6-4F1C5A0EBC3E}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HelpFunctions.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Model/Participant.cs">
     <Files>
-      <File FileName="KittyContext.cs" Line="17" Column="119" />
-      <File FileName="Program.cs" Line="9" Column="1" />
-      <File FileName="DatabaseFramework.cs" Line="16" Column="42" />
-      <File FileName="Kitty.cs" Line="1" Column="1" />
+      <File FileName="HelpFunctions.cs" Line="67" Column="35" />
+      <File FileName="Model/Participant.cs" Line="16" Column="41" />
+      <File FileName="Model/Comment.cs" Line="1" Column="1" />
+      <File FileName="Model/DataTypes.cs" Line="3" Column="11" />
+      <File FileName="KittySplitContext.cs" Line="25" Column="46" />
+      <File FileName="Model/Kitty.cs" Line="24" Column="53" />
+      <File FileName="Program.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Assignment04_ProSE" expanded="True">
             <Node name="Assignment04_ProSE" expanded="True">
-              <Node name="Model" expanded="True" />
-              <Node name="HelpFunctions.cs" selected="True" />
+              <Node name="Model" expanded="True">
+                <Node name="Kitty.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Assignment04__ProSE PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

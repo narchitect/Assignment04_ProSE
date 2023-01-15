@@ -16,7 +16,6 @@ namespace Assignment04_ProSE
                 Console.WriteLine("Enter the event Name: ");
                 string eventName = Console.ReadLine();
 
-
                 //set SelectCurrency
                 Console.WriteLine("Select Currency: ");
                 List<string> currencyList = Enum.GetNames(typeof(Currency)).ToList();
@@ -25,7 +24,7 @@ namespace Assignment04_ProSE
                     Console.WriteLine(c);
                 }
                 string userInputCurrency = Console.ReadLine();
-                string homeCurrency = VaildCurrency(userInputCurrency);
+                Currency homeCurrency = VaildCurrency(userInputCurrency);
 
 
                 //set Participants
@@ -54,18 +53,25 @@ namespace Assignment04_ProSE
                     Console.WriteLine("Do you want to add more? or to finish, write anything");
                     userInputParticipantName = Console.ReadLine();
                 }
-                
+
 
                 //Print out the overview of the kitty
                 Console.WriteLine("----- your kitty infos -----\n" +
                     "Event Name: {0}\n" +
                     "HomeCurrency: {1}\n" +
-                    "Creator email: {2}\n" , eventName, homeCurrency, creatorEmail);
+                    "Creator email: {2}\n", eventName, homeCurrency.ToString(), creatorEmail) ;
 
                 for (int i = 0; i < participantsNameList.Count; i++)
                 { Console.WriteLine("Participant{0} : {1}", i+1, participantsNameList[i]); }
+
+                //Create Kitty obj
+                var aKitty = new Kitty();
+                {
+                    aKitty.EventName = eventName;
+                    aKitty.Link = " ";
+                    aKitty.HomeCurrency = homeCurrency;
+                }
                 
-                //CreateKitty();
             }
 
             else if (userInput == "Exit")
@@ -75,11 +81,10 @@ namespace Assignment04_ProSE
             else
             {
                 Console.WriteLine("Wrong startKeyWord, Write it again. To Exit, Write 'Exit'");
-                CreateKitty();
             }
         }
 
-        public static string VaildCurrency(string userInputCurrency)
+        public static Currency VaildCurrency(string userInputCurrency)
         {
             var homeCurrency = new Currency();
             if (Enum.IsDefined(typeof(Currency), userInputCurrency))
@@ -92,7 +97,7 @@ namespace Assignment04_ProSE
                 userInputCurrency = Console.ReadLine();
                 VaildCurrency(userInputCurrency);
             }
-            return homeCurrency.ToString();
+            return homeCurrency;
         }
 
         ////Add Kitty
