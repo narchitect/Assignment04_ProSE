@@ -5,6 +5,7 @@ namespace Assignment04_ProSE
     public class HelpFunctions
     {
         static Kitty aKitty { get; set; }
+        static List<string> ParticipantsNames { get; set; }
 
         public static void CreateKitty()
         {
@@ -55,6 +56,7 @@ namespace Assignment04_ProSE
                     Console.WriteLine("Do you want to add more? or to finish, write anything");
                     userInputParticipantName = Console.ReadLine();
                 }
+                ParticipantsNames = participantsNameList;
 
 
                 //Print out the overview of the kitty
@@ -116,8 +118,13 @@ namespace Assignment04_ProSE
 
         //Add expense
 
-        public static void AddPayment()
+        public static void AddPayment(Kitty aKitty)
         {
+            tjo
+            Console.WriteLine("Current Kitty: {0}", aKitty.EventName);
+            for (int i = 0; i < ParticipantsNames.Count; i++)
+            { Console.WriteLine("Participant{0} : {1}", i + 1, ParticipantsNames[i]); }
+
             Console.WriteLine("Enter the ower of the payment: ");
             string ownerName = Console.ReadLine();
 
@@ -130,17 +137,19 @@ namespace Assignment04_ProSE
             Console.WriteLine("Enter the DateTime: Example(mm/dd/yyyy)");
             DateTime dateTime = VaildDateTime(Console.ReadLine());
 
-            
+            var ownerId = aKitty.Participants.Where(p => p.Name == ownerName)
+                .Select(p => p.Id).First();
+
             var aPayment = new Payment()
             {
                 Purpose = purpose,
                 Amount = amount,
-                DateTime = dateTime
+                DateTime = dateTime,
+                ParticipantId = ownerId
             };
 
-            var owner = aKitty.Participants.Where(p => p.Name == ownerName)
-                .Select(p => p).First();
-            owner.Payments.Add(aPayment);
+            
+            
 
             using (var context = new KittySplitContext())
             {

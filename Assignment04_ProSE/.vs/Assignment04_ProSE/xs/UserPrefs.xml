@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{F6EE0555-8758-44E1-98F6-4F1C5A0EBC3E}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Assignment04__ProSE PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Model/Payment.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Model/Kitty.cs">
     <Files>
-      <File FileName="HelpFunctions.cs" Line="120" Column="10" />
       <File FileName="Model/Participant.cs" />
       <File FileName="Model/Comment.cs" />
       <File FileName="Model/DataTypes.cs" />
       <File FileName="KittySplitContext.cs" />
       <File FileName="Model/Kitty.cs" Line="34" Column="2" />
-      <File FileName="Program.cs" NotebookId="1" />
+      <File FileName="Program.cs" Line="9" Column="11" NotebookId="1" />
       <File FileName="Model/Payment.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
@@ -25,8 +26,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Assignment04__ProSE PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
 </Properties>
