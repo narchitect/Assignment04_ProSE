@@ -30,9 +30,11 @@ namespace Assignment04_ProSE
                 string userInputCurrency = Console.ReadLine();
                 Currency homeCurrency = VaildCurrency(userInputCurrency);
 
+                //set Link
+                string aLink = "http://www.kittysplit.com/"+eventName + "/"+ System.Guid.NewGuid().ToString();
+
 
                 //set Participants
-
                 //1. create participants list
                 List<string> participantsNameList = new List<string>();
                 //2. set creator with email
@@ -80,6 +82,7 @@ namespace Assignment04_ProSE
                 }
 
                 aKitty = new Kitty(eventName, homeCurrency);
+                aKitty.Link = aLink;
                 aKitty.Participants = participants;
 
                 using (var context = new KittySplitContext())
@@ -308,7 +311,7 @@ namespace Assignment04_ProSE
             }
             else if (userInput == "no")
             {
-                System.Environment.Exit(0);
+                //System.Environment.Exit(0);
             }
             else
             {
