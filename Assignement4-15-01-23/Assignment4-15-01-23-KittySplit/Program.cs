@@ -9,8 +9,8 @@ public class Program
     {
         //HelpFunction.AddParticipant();
         //HelpFunction.AddComment();
-        //HelpFunction.CreateOverview();
-        HelpFunction.DeleteCommentFromDatabase();
+        HelpFunction.CreateOverview();
+        //HelpFunction.DeleteCommentFromDatabase();
         //HelpFunction.ShowKittyLink();
 
         //var Tony = new Participant()
