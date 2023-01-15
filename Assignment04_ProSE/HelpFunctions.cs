@@ -4,7 +4,9 @@ namespace Assignment04_ProSE
 {
     public class HelpFunctions
     {
-        public static Kitty CreateKitty()
+        static Kitty aKitty { get; set; }
+
+        public static void CreateKitty()
         {
             Console.WriteLine("Welcome to KittySplit! to Start Kitty write 'Start Kitty'");
             string userInput = Console.ReadLine();
@@ -66,27 +68,23 @@ namespace Assignment04_ProSE
 
 
                 //Create Kitty obj
-                Kitty aKitty;
 
                 List<Participant> participants = new List<Participant>();
                 var creator = new Participant(creatorName, creatorEmail);
                 participants.Add(creator);
-                for (int i = 1; i < participants.Count; i++)
+                for (int i = 1; i < participantsNameList.Count; i++)
                 {
                     participants.Add(new Participant(participantsNameList[i]));
                 }
 
                 aKitty = new Kitty(eventName, homeCurrency);
                 aKitty.Participants = participants;
-                
+
                 using (var context = new KittySplitContext())
                 {
                     context.Kitties.Add(aKitty);
                     context.SaveChanges();
                 }
-
-                
-                return aKitty;
             }
 
             else if (userInput == "Exit")
@@ -97,7 +95,6 @@ namespace Assignment04_ProSE
             {
                 Console.WriteLine("Wrong startKeyWord, Write it again. To Exit, Write 'Exit'");
             }
-            return null;
         }
 
         private static Currency VaildCurrency(string userInputCurrency)
@@ -116,17 +113,59 @@ namespace Assignment04_ProSE
             return homeCurrency;
         }
 
-        ////Add Kitty
-        //public static Kitty CreateKitty()
-        //{
 
+        //Add expense
 
-        //    using (var context = new KittyContext())
-        //    {
-        //        context.Kitties.Add(kitty);
-        //        context.SaveChanges();
-        //    }
-        //}
+        public static void AddPayment()
+        {
+            Console.WriteLine("Enter the ower of the payment: ");
+            string ownerName = Console.ReadLine();
+
+            Console.WriteLine("Enter the payment purpose: ");
+            string purpose = Console.ReadLine();
+
+            Console.WriteLine("Enter the amount: ");
+            double amount = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Enter the DateTime: Example(mm/dd/yyyy)");
+            DateTime dateTime = VaildDateTime(Console.ReadLine());
+
+            
+            var aPayment = new Payment()
+            {
+                Purpose = purpose,
+                Amount = amount,
+                DateTime = dateTime
+            };
+
+            var owner = aKitty.Participants.Where(p => p.Name == ownerName)
+                .Select(p => p).First();
+            owner.Payments.Add(aPayment);
+
+            using (var context = new KittySplitContext())
+            {
+                context.Payments.Add(aPayment);
+                context.SaveChanges();
+            }
+        }
+
+        private static DateTime VaildDateTime(string userInput)
+        {
+            DateTime dateTime;
+            if (DateTime.TryParse(userInput, out dateTime))
+            {
+                dateTime = DateTime.Parse(userInput);
+                return dateTime;
+            }
+            else
+            {
+                Console.WriteLine("wrong DateTime format. Try it again. Example(mm/dd/yyyy)");
+                userInput = Console.ReadLine();
+                VaildDateTime(userInput);
+            }
+
+            return dateTime;
+        }
 
         ////Add Participant
         //public static void AddParticipant(Participant participant)

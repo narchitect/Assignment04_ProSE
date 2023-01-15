@@ -12,4 +12,6 @@ namespace Assignment04_ProSE
         public int ParticipantId { get; set; }
         public Participant Participant { get; set; } = null!;
     }
+
+
 }

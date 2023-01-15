@@ -1,31 +1,30 @@
 ﻿<Properties StartupConfiguration="{F6EE0555-8758-44E1-98F6-4F1C5A0EBC3E}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Model/Participant.cs">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Model/Payment.cs">
     <Files>
-      <File FileName="HelpFunctions.cs" Line="67" Column="35" />
-      <File FileName="Model/Participant.cs" Line="16" Column="41" />
-      <File FileName="Model/Comment.cs" Line="1" Column="1" />
-      <File FileName="Model/DataTypes.cs" Line="3" Column="11" />
-      <File FileName="KittySplitContext.cs" Line="25" Column="46" />
-      <File FileName="Model/Kitty.cs" Line="24" Column="53" />
-      <File FileName="Program.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="HelpFunctions.cs" Line="120" Column="10" />
+      <File FileName="Model/Participant.cs" />
+      <File FileName="Model/Comment.cs" />
+      <File FileName="Model/DataTypes.cs" />
+      <File FileName="KittySplitContext.cs" />
+      <File FileName="Model/Kitty.cs" Line="34" Column="2" />
+      <File FileName="Program.cs" NotebookId="1" />
+      <File FileName="Model/Payment.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Assignment04_ProSE" expanded="True">
             <Node name="Assignment04_ProSE" expanded="True">
-              <Node name="Model" expanded="True">
-                <Node name="Kitty.cs" selected="True" />
-              </Node>
+              <Node name="Model" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Assignment04__ProSE PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
