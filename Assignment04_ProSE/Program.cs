@@ -7,7 +7,8 @@ public class Program
     static void Main(string[] args)
     {
         //HelpFunctions.CreateKitty();
-        HelpFunctions.AddPayment();
+        //HelpFunctions.AddPayment();
+        HelpFunctions.AddComment();
         //var Tami = new Participant();
         //{
         //    Tami.Name = "Tamira";

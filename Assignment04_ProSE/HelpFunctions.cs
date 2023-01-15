@@ -1,5 +1,4 @@
 ﻿using System;
-using Internal;
 
 namespace Assignment04_ProSE
 {
@@ -100,7 +99,6 @@ namespace Assignment04_ProSE
             }
         }
 
-        //Add expense
         public static void AddPayment()
         {
             using (var context = new KittySplitContext())
@@ -184,11 +182,34 @@ namespace Assignment04_ProSE
             string userInput = Console.ReadLine();
             if (userInput == "yes")
             {
-                Console.WriteLine("Who are you?");
-                using (var context = new KittyContext())
+
+                Console.WriteLine("Which Event do you want to edit");
+                using (var context = new KittySplitContext())
                 {
-                    var participantIds = context.Participants
+                    //check the current kitty
+                    var kitties = context.Kitties.ToList();
+                     foreach (Kitty k in kitties)
+                    { Console.WriteLine("Event Lists: {0}", k.EventName); }
+
+                    Console.WriteLine("Select the event: ");
+                    string eventName = Console.ReadLine();
+
+                    Kitty currentKitty;
+                    while (true)
+                    {
+                        currentKitty = VaildEventName(kitties, eventName);
+                        if (currentKitty != null)
+                        {
+                            break;
+                        }
+                        Console.WriteLine("select a right eventName");
+                        eventName = Console.ReadLine();
+                    }
+
+                    //find participants to the current kitty
+                    var participantIds = context.Participants.Where(p => p.KittyId == currentKitty.Id)
                         .ToList();
+
                     foreach (var participant in participantIds)
                     {
                         Console.WriteLine("Name: {0} , ParticipantId: {1}", participant.Name, participant.Id);
@@ -204,7 +225,7 @@ namespace Assignment04_ProSE
                     DateTime = DateTime.Now,
                     ParticipantId = participantId
                 };
-                using (var context = new KittyContext())
+                using (var context = new KittySplitContext())
                 {
                     context.Comments.Add(YourComment);
                     context.SaveChanges();
@@ -222,6 +243,50 @@ namespace Assignment04_ProSE
                 DeleteCommentFromDatabase();
             }
 
+        }
+
+        public static void DeleteCommentFromDatabase()
+        {
+            Console.WriteLine("Current Comments in the Database.");
+            using (var context = new KittySplitContext())
+            {
+                var commentIds = context.Comments
+                    .ToList();
+                foreach (var comment in commentIds)
+                {
+                    Console.WriteLine("Comment: {0} , CommentId: {1}", comment.Content, comment.Id);
+                }
+            }
+            Console.WriteLine("Do you want to delet a comment? yes or no?");
+            string userInput = Console.ReadLine();
+            if (userInput == "yes")
+            {
+                Console.WriteLine("Which Comment do you want to delete: Enter the Id:");
+                int commentId = Convert.ToInt32(Console.ReadLine());
+
+                using (var context = new KittySplitContext())
+                {
+                    List<Comment> comments = new List<Comment>()
+                    {
+                        new Comment{Id = commentId },
+                    };
+                    foreach (Comment comment in comments)
+                    {
+                        context.Comments.Remove(comment);
+                    }
+                    context.SaveChanges();
+                }
+                Console.WriteLine("Your comment was deleted.");
+            }
+            else if (userInput == "no")
+            {
+                System.Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("Wrong Comment Id. Try again");
+                DeleteCommentFromDatabase();
+            }
         }
 
 
