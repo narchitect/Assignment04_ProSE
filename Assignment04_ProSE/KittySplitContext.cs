@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Sqlite;
 
 namespace Assignment04_ProSE
 {
-    public class KittyContext : DbContext
+    public class KittySplitContext : DbContext
     {
 
         public DbSet<Kitty> Kitties { get; set;}
@@ -14,7 +14,7 @@ namespace Assignment04_ProSE
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/KittyDatabase.db");
+            optionsBuilder.UseSqlite("Data Source=/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Data/KittySplitDB.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) // function to define relations among different sets in a database

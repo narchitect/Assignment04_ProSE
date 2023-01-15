@@ -5,50 +5,52 @@ using Assignment04_ProSE;
 public class Program
 {
     static void Main(string[] args)
-    { 
-        var Kim = new Participant();
-        {
-            Kim.Name = "Kim";
-            Kim.Seen = true;
-            Kim.Total = 11.2;
-            Kim.Mark = true;
-            Kim.Email = "ny.@icloud.com";
-        }
+    {
+        HelpFunctions.CreateKitty();
 
-        var KoreaTrip = new Kitty();
-        {
-            KoreaTrip.EventName = "KoreaTrip";
-            KoreaTrip.Link = "url";
-            KoreaTrip.HomeCurrency = Currency.KRW;
-            KoreaTrip.GroupCost = 100.3;
-            KoreaTrip.Pariticipants.Add(Kim);
-        }
+        //var Tami = new Participant();
+        //{
+        //    Tami.Name = "Tamira";
+        //    Tami.Seen = true;
+        //    Tami.Total = 123.2;
+        //    Tami.Mark = true;
+        //    Tami.Email = "TM.@icloud.com";
+        //}
 
-        var Comment = new Comment();
-        {
-            Comment.Content = "Hi, this is a comment";
-            Comment.DateTime = new DateTime(2023, 1, 14, 9, 27, 0);
-        }
+        //var GermanyTrip = new Kitty();
+        //{
+        //    GermanyTrip.EventName = "GermanyTrip";
+        //    GermanyTrip.Link = "url";
+        //    GermanyTrip.HomeCurrency = Currency.EUR;
+        //    GermanyTrip.GroupCost = 1020.3;
+        //    GermanyTrip.Pariticipants.Add(Tami);
+        //}
 
-        Kim.Comments.Add(Comment);
+        //var Comment = new Comment();
+        //{
+        //    Comment.Content = "I'm Tami";
+        //    Comment.DateTime = new DateTime(2023, 1, 14, 9, 27, 0);
+        //}
 
-        var Payment = new Payment();
-        {
-            Payment.Purpose = "KoreanRestaurant";
-            Payment.Amount = 1000;
-            Payment.DateTime = DateTime.Now;
-        }
+        //Tami.Comments.Add(Comment);
 
-        Kim.Payments.Add(Payment);
+        //var Payment = new Payment();
+        //{
+        //    Payment.Purpose = "Tami";
+        //    Payment.Amount = 1200;
+        //    Payment.DateTime = DateTime.Now;
+        //}
 
-        using (var context = new KittyContext())
-        {
-            context.Kitties.Add(KoreaTrip);
-            context.Participants.Add(Kim);
-            context.Comments.Add(Comment);
-            context.Payments.Add(Payment);
-            context.SaveChanges();
-        }
+        //Tami.Payments.Add(Payment);
+
+        //using (var context = new KittySplitContext())
+        //{
+        //    context.Kitties.Add(GermanyTrip);
+        //    context.Participants.Add(Tami);
+        //    context.Comments.Add(Comment);
+        //    context.Payments.Add(Payment);
+        //    context.SaveChanges();
+        //}
     }
 }
 
