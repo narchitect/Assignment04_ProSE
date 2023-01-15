@@ -7,10 +7,10 @@ namespace Assignment04_ProSE
         
         public int Id { get; set; }
         public string Name { get; set; } = null!;
-        public string Email { get; set; }
+        public string? Email { get; set; }
         public bool Seen { get; set; }
         public bool Mark { get; set; }
-        public double Total { get; set; }
+        public double? Total { get; set; }
         
 
         public int KittyId { get; set; }
@@ -26,6 +26,11 @@ namespace Assignment04_ProSE
             Payments = new List<Payment>();
 
             this.Name = name; 
+        }
+
+        public Participant(string name, string email) : this(name)
+        {
+            this.Email = email;
         }
     }
 }

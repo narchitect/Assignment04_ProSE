@@ -4,7 +4,7 @@ namespace Assignment04_ProSE
 {
     public class HelpFunctions
     {
-        public static void CreateKitty()
+        public static Kitty CreateKitty()
         {
             Console.WriteLine("Welcome to KittySplit! to Start Kitty write 'Start Kitty'");
             string userInput = Console.ReadLine();
@@ -45,7 +45,7 @@ namespace Assignment04_ProSE
 
                 //3. set other participant's names
                 Console.WriteLine("If you want to add Participants, Write 'Add a participant's name'");
-                
+
                 string userInputParticipantName = Console.ReadLine();
                 while (userInputParticipantName.IndexOf("Add") != -1)
                 {
@@ -59,19 +59,34 @@ namespace Assignment04_ProSE
                 Console.WriteLine("----- your kitty infos -----\n" +
                     "Event Name: {0}\n" +
                     "HomeCurrency: {1}\n" +
-                    "Creator email: {2}\n", eventName, homeCurrency.ToString(), creatorEmail) ;
+                    "Creator email: {2}\n", eventName, homeCurrency.ToString(), creatorEmail);
 
                 for (int i = 0; i < participantsNameList.Count; i++)
-                { Console.WriteLine("Participant{0} : {1}", i+1, participantsNameList[i]); }
+                { Console.WriteLine("Participant{0} : {1}", i + 1, participantsNameList[i]); }
+
 
                 //Create Kitty obj
-                var aKitty = new Kitty();
+                Kitty aKitty;
+
+                List<Participant> participants = new List<Participant>();
+                var creator = new Participant(creatorName, creatorEmail);
+                participants.Add(creator);
+                for (int i = 1; i < participants.Count; i++)
                 {
-                    aKitty.EventName = eventName;
-                    aKitty.Link = " ";
-                    aKitty.HomeCurrency = homeCurrency;
+                    participants.Add(new Participant(participantsNameList[i]));
                 }
+
+                aKitty = new Kitty(eventName, homeCurrency);
+                aKitty.Participants = participants;
                 
+                using (var context = new KittySplitContext())
+                {
+                    context.Kitties.Add(aKitty);
+                    context.SaveChanges();
+                }
+
+                
+                return aKitty;
             }
 
             else if (userInput == "Exit")
@@ -82,9 +97,10 @@ namespace Assignment04_ProSE
             {
                 Console.WriteLine("Wrong startKeyWord, Write it again. To Exit, Write 'Exit'");
             }
+            return null;
         }
 
-        public static Currency VaildCurrency(string userInputCurrency)
+        private static Currency VaildCurrency(string userInputCurrency)
         {
             var homeCurrency = new Currency();
             if (Enum.IsDefined(typeof(Currency), userInputCurrency))
