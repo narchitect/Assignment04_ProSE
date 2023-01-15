@@ -250,14 +250,40 @@ namespace Assignment04_ProSE
             Console.WriteLine("Current Comments in the Database.");
             using (var context = new KittySplitContext())
             {
-                var commentIds = context.Comments
+                //check the current kitty
+                Console.WriteLine("Which Event do you want to edit");
+                var kitties = context.Kitties.ToList();
+                foreach (Kitty k in kitties)
+                { Console.WriteLine("Event Lists: {0}", k.EventName); }
+
+                Console.WriteLine("Select the event: ");
+                string eventName = Console.ReadLine();
+
+                Kitty currentKitty;
+                while (true)
+                {
+                    currentKitty = VaildEventName(kitties, eventName);
+                    if (currentKitty != null)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("select a right eventName");
+                    eventName = Console.ReadLine();
+                }
+
+                //vaild the commentIds
+                var participants = context.Participants.Where(p => p.KittyId == currentKitty.Id)
                     .ToList();
+
+                var commentIds = context.Comments.Where(c => participants.Contains(c.Participant)).ToList();
+                
                 foreach (var comment in commentIds)
                 {
                     Console.WriteLine("Comment: {0} , CommentId: {1}", comment.Content, comment.Id);
                 }
             }
-            Console.WriteLine("Do you want to delet a comment? yes or no?");
+
+            Console.WriteLine("Do you want to delete a comment? yes or no?");
             string userInput = Console.ReadLine();
             if (userInput == "yes")
             {
@@ -266,6 +292,7 @@ namespace Assignment04_ProSE
 
                 using (var context = new KittySplitContext())
                 {
+                   
                     List<Comment> comments = new List<Comment>()
                     {
                         new Comment{Id = commentId },

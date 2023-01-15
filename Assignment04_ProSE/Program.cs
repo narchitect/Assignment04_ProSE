@@ -9,7 +9,8 @@ public class Program
         //HelpFunctions.CreateKitty();
         //HelpFunctions.AddPayment();
         //HelpFunctions.AddComment();
-        HelpFunctions.CommentOverview();
+        //HelpFunctions.CommentOverview();
+        HelpFunctions.DeleteCommentFromDatabase();
         //var Tami = new Participant();
         //{
         //    Tami.Name = "Tamira";
