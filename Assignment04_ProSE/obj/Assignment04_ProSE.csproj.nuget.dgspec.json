@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj": {}
+    "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment04_ProSE\\Assignment04_ProSE\\Assignment04_ProSE.csproj": {}
   },
   "projects": {
-    "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj": {
+    "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment04_ProSE\\Assignment04_ProSE\\Assignment04_ProSE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj",
+        "projectUniqueName": "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment04_ProSE\\Assignment04_ProSE\\Assignment04_ProSE.csproj",
         "projectName": "Assignment04_ProSE",
-        "projectPath": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/Assignment04_ProSE.csproj",
-        "packagesPath": "/Users/kimnayun/.nuget/packages/",
-        "outputPath": "/Users/kimnayun/Projects/Assignment04_TUM22/Assignment04_ProSE/obj/",
+        "projectPath": "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment04_ProSE\\Assignment04_ProSE\\Assignment04_ProSE.csproj",
+        "packagesPath": "C:\\Users\\Anwender\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Anwender\\Documents\\GitHub\\Assignment04_ProSE\\Assignment04_ProSE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/kimnayun/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Anwender\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -65,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
